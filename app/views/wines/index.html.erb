@@ -1,0 +1,10 @@
+<h1>Wines - Under Review</h1>
+<ul>
+<p>Available as of <%= formatted_time(@available_at) %></p>
+<ol>
+<% @wines.each do |wine| %>
+  <li>
+    <%= link_to(wine.name, wine) %> made by <%= wine.winery %> - <%= wine.varietal %>
+  </li>
+<% end %>
+</ol>
