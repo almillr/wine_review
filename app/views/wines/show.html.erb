@@ -6,6 +6,13 @@
   <p><label>Winery:</label> <%= @wine.winery %></p>
   <p><label>Country:</label> <%= @wine.country  %></p>
   <p><label>Varietal:</label> <%= @wine.varietal %></p>
+  <table>
+    <tr>
+      <td><%= button_to("Edit", edit_wine_path(@wine), method: :get) %></td>
+      <td><%= button_to "Delete", @wine, method: :delete, data: { confirm: "Are you sure?" } %></td>
+    </tr>
+  </table>
+  <br/>
 </article>
 
 <%= link_to 'All Wines', wines_path %>

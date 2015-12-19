@@ -4,8 +4,16 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-get '/wine_review' => 'wines#index', as: 'wines'
-resources :wines
+
+  root 'wines#index'
+  get "/wine_review" => "wines#index", as: 'wines'
+  get "/wine_review/new" => "wines#new", as: 'new_wine'
+  get "/wine_review/:id" => "wines#show", as: 'wine'
+  post "/wine_review" => "wines#create"
+  patch "/wine_review/:id" => "wines#update"
+  delete "/wine_review/:id" => "wines#destroy"
+  resources :wines
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
