@@ -1,0 +1,1 @@
+VARIETALS = [‘Barbera', 'Cabernet Sauvignon', 'Champagne/Sparkling Wine’, ‘Chardonnay’, ‘Chenin Blanc’, ‘Dolcetto’, ‘Fume Blanc’, ‘Gewürztraminer’, ‘Merlot’, ‘Mourvedre’, ‘Petite Sirah’, ‘Pinot Grigio’, ‘Pinot Noir’, ‘Riesling’, ‘Rosés’, ‘Sangiovese’,  ‘Sauvignon Blanc’, ‘Syrah’, ‘Viognier’, ‘Zinfandel']

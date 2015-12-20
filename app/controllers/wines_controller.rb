@@ -1,13 +1,11 @@
 class WinesController < ApplicationController
-  before_action :new_wine,
-                only: [ :create ]
   before_action :set_wine,
-                only: [ :show, :update, :edit, :destroy ]
+                only: [ :show, :edit, :update, :destroy ]
 
-  def index
-    @available_at = Time.now
-    @wines = Wine.all
-  end
+def index
+  @available_at = Time.now
+  @wines = Wine.order(:name).page(params[:page])
+end
 
   def show; end
 
@@ -16,15 +14,20 @@ class WinesController < ApplicationController
   end
 
   def create
-    @wine.save
-    redirect_to @wine
+    @wine= Book.new(book_params)
+    if @wine.save
+      redirect_to @wine, notice: "#{@wine.name} was created!"
+    else
+      render :new
+    end
   end
 
-  def edit; end
-
   def update
-    @wine.update(wine_params)
-    redirect_to @wine
+    if @wine.update(wine_params)
+      redirect_to @wine, notice: "#{@wine.name} was updated!"
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -40,10 +43,6 @@ class WinesController < ApplicationController
 
   def set_wine
     @wine = Wine.find(params[:id])
-  end
-
-  def new_wine
-    @wine = Wine.new(wine_params)
   end
 
 end

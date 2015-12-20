@@ -1,9 +1,13 @@
-<h1>Wines - Under Review</h1>
-<h2>Available as of <%= formatted_time(@available_at) %> </h2>
+<h3>Available as of <%= formatted_time(@available_at) %> </h3>
+<%= page_entries_info @wines %>
+<br/>
+<br/>
 <table>
   <tr>
     <td>Name</td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>Winery</td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -11,13 +15,13 @@
   <% @wines.each do |wine| %>
   <tr>
     <td><%= wine.name %></td>
-    <td><%= wine.winery %> </td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><%= wine.winery %></td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><%= button_to("Show", wine, method: :get) %></td>
     <td><%= button_to("Edit", edit_wine_path(wine), method: :get) %></td>
     <td><%= button_to "Delete", wine, method: :delete, data: { confirm: "Are you sure?" } %></td>
   </tr>
   <% end %>
 </table>
-<br/>
-<br/>
-<%= button_to('Add Wine', new_wine_path, method: :get) %>
+<%= paginate @wines %>

@@ -6,13 +6,15 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   root 'wines#index'
-  get "/wine_review" => "wines#index", as: 'wines'
-  get "/wine_review/new" => "wines#new", as: 'new_wine'
-  get "/wine_review/:id" => "wines#show", as: 'wine'
-  post "/wine_review" => "wines#create"
-  patch "/wine_review/:id" => "wines#update"
-  delete "/wine_review/:id" => "wines#destroy"
-  resources :wines
+  get '/wine_review' => 'wines#index', as: 'wines'
+  get '/wine_review/new' => 'wines#new', as: 'new_wine'
+  get '/wine_review/:id' => 'wines#show', as: 'wine'
+  post '/wine_review' => 'wines#create'
+  patch '/wine_review/:id' => 'wines#update'
+  delete '/wine_review/:id' => 'wines#destroy'
+  resources :wines do
+      get 'page/:page', :action => :index, :on => :collection
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
