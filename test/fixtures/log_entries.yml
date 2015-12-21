@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  rating: 1
+  location: MyString
+  comments: MyText
+  tasted_on: 2015-12-21 01:49:36
+  wine_id: 
+
+two:
+  name: MyString
+  rating: 1
+  location: MyString
+  comments: MyText
+  tasted_on: 2015-12-21 01:49:36
+  wine_id: 

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
+   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   post '/wine_review' => 'wines#create'
   patch '/wine_review/:id' => 'wines#update'
   delete '/wine_review/:id' => 'wines#destroy'
+
   resources :wines do
-      get 'page/:page', :action => :index, :on => :collection
+    resources :log_entries
+    get 'page/:page', :action => :index, :on => :collection
   end
 
   # Example of regular route:

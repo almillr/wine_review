@@ -6,6 +6,7 @@ class CreateWines < ActiveRecord::Migration
       t.string :winery
       t.string :country
       t.string :varietal
+      t.integer :average_rating
 
       t.timestamps null: false
     end

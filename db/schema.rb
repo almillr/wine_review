@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213193328) do
+ActiveRecord::Schema.define(version: 20151221110416) do
+
+  create_table "log_entries", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "rating"
+    t.string   "location"
+    t.text     "comments"
+    t.datetime "tasted_on"
+    t.integer  "wine_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "log_entries", ["wine_id"], name: "index_log_entries_on_wine_id"
 
   create_table "wines", force: :cascade do |t|
     t.string   "name"
@@ -19,8 +32,9 @@ ActiveRecord::Schema.define(version: 20151213193328) do
     t.string   "winery"
     t.string   "country"
     t.string   "varietal"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "average_rating"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end

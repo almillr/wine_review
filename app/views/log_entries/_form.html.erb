@@ -1,0 +1,18 @@
+<%= form_for( [ @wine, @log_entry ] ) do |f| %>
+  <%= render 'shared/validation_errors', object: @log_entry %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, autofocus: true, placeholder: 'Name' %><br/>
+  <%= f.label :location %>
+  <%= f.text_field :location %><br/>
+  <%= f.label :rating %>
+  <% LogEntry::RATING.each do |s| %>
+    <%= f.radio_button :rating, s %> <%= s %>
+  <% end %><br />
+  <%= f.label :comment %><br/>
+  <%= f.text_area :comments %><br/>
+  <p>
+    <%= f.submit %>
+    <%= link_to 'Cancel', wine_log_entry_path(@wine), id: 'cancel_wine' %>
+  </p>
+<% end %>

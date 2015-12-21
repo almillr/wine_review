@@ -2,10 +2,10 @@ class WinesController < ApplicationController
   before_action :set_wine,
                 only: [ :show, :edit, :update, :destroy ]
 
-def index
-  @available_at = Time.now
-  @wines = Wine.order(:name).page(params[:page])
-end
+  def index
+    @available_at = Time.now
+    @wines = Wine.includes(:log_entries).order(:name).page(params[:page])
+  end
 
   def show; end
 
@@ -38,7 +38,7 @@ end
   private
 
   def wine_params
-    params.require(:wine).permit(:name, :winery, :country, :year, :varietal)
+    params.require(:wine).permit(:name, :winery, :country, :average_rating, :year, :varietal)
   end
 
   def set_wine

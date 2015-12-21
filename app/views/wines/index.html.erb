@@ -11,6 +11,7 @@
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
   </tr>
   <% @wines.each do |wine| %>
   <tr>
@@ -18,6 +19,10 @@
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td><%= wine.winery %></td>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td><%= format_average_rating(wine) %>
+        <% if log_entry.any? %>
+    (out of <%= pluralize(wine.log_entries.size, 'log entry') %>)
+  <% end %>
     <td><%= button_to("Show", wine, method: :get) %></td>
     <td><%= button_to("Edit", edit_wine_path(wine), method: :get) %></td>
     <td><%= button_to "Delete", wine, method: :delete, data: { confirm: "Are you sure?" } %></td>
